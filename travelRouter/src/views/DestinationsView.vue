@@ -30,7 +30,7 @@ cargarDestino();
       </div>
     </div>
 
-    <h2>Experiences</h2>
+    <h2>Top Experiences in {{ destination.name }}</h2>
     <div class="experiences">
       <div class="cards">
         <router-link
