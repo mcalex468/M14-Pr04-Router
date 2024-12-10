@@ -1,13 +1,16 @@
 <script setup>
-import { ref, onMounted } from "vue";
+import { ref } from "vue";
 
 const datos = ref(null);
 
-onMounted(async () => {
+const fetchData = async () => {
   const response = await fetch("/data.json");
   datos.value = await response.json();
-});
+};
+
+fetchData();
 </script>
+
 
 <template>
   <div class="home">

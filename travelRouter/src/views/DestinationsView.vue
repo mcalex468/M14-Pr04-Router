@@ -22,18 +22,28 @@ cargarDestino();
 <template>
   <div :key="$route.fullPath" class="destination">
     <GoBack />
-    <h1>{{ destination?.name }}</h1>
-    <img v-if="destination" :src="`/images/${destination.image}`" :alt="destination.name" />
-    <p v-if="destination">{{ destination.description }}</p>
+    <div class="destination-details">
+      <img v-if="destination" :src="`/images/${destination.image}`" :alt="destination.name" />
+      <div>
+        <h1>{{ destination?.name }}</h1>
+        <p>{{ destination?.description }}</p>
+      </div>
+    </div>
 
     <h2>Experiences</h2>
-    <div v-if="destination" class="experiences">
-      <router-link
-        v-for="experience in destination.experiences" :key="experience.slug" :to="{ name: 'experience.show', params: 
-        { slug: experience.slug, id: destination.id } }">
-        <h3>{{ experience.name }}</h3>
-        <img :src="`/images/${experience.image}`" :alt="experience.name" />
-      </router-link>
+    <div class="experiences">
+      <div class="cards">
+        <router-link
+          v-for="experience in destination?.experiences"
+          :key="experience.slug"
+          :to="{ name: 'experience.show', params: { slug: experience.slug, id: destination.id } }"
+        >
+          <div class="card">
+            <img :src="`/images/${experience.image}`" :alt="experience.name" />
+            <span class="card__text">{{ experience.name }}</span>
+          </div>
+        </router-link>
+      </div>
     </div>
   </div>
 </template>

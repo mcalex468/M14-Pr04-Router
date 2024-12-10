@@ -1,27 +1,22 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import HomeView from '@/views/HomeView.vue';
-import DestinationView from '@/views/DestinationsView.vue';
-import ExperienceView from '@/views/ExperienceView.vue';
 
 const routes = [
   {
     path: '/',
     name: 'home',
-    component: HomeView,
+    component: () => import('@/views/HomeView.vue'), 
   },
   {
-    path: '/destination/:id/:slug', 
+    path: '/destination/:id/:slug',
     name: 'destination.show',
-    component: DestinationView,
-    props: true,
-    children:[{
-      path: '/experience/:id/:slug', 
-    name: 'experience.show',
-    component: ExperienceView,
-    props: true,
-    }]
+    component: () => import('@/views/DestinationsView.vue'), 
   },
-
+  {
+    path: '/experience/:id/:slug',
+    name: 'experience.show',
+    component: () => import('@/views/ExperienceView.vue'), 
+    props: true,
+  },
 ];
 
 const router = createRouter({
