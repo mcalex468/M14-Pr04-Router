@@ -14,13 +14,14 @@ const routes = [
     name: 'destination.show',
     component: DestinationView,
     props: true,
-  },
-  {
-    path: '/experience/:id/:slug', 
+    children:[{
+      path: '/experience/:id/:slug', 
     name: 'experience.show',
     component: ExperienceView,
     props: true,
+    }]
   },
+
 ];
 
 const router = createRouter({
